@@ -181,12 +181,26 @@
         p { color: var(--text-muted); margin-bottom: 0.8rem; font-size: 0.95rem; transition: color 0.5s ease; line-height: 1.6;}
         .summary { margin-top: 15px; font-size: 0.95rem; line-height: 1.7; color: var(--text-main); font-weight: 400;}
 
-        /* UX UPGRADE: Competencies Grid Layout */
-        .competency-grid {
+        /* UX UPGRADE: Competencies as Subtle Square Cards */
+        .competency-card {
+            background: var(--pill-bg);
+            border: 1px solid var(--pill-border);
+            border-radius: 4px; /* The square shape */
+            padding: 16px 20px;
+            margin-bottom: 12px;
             display: grid;
             grid-template-columns: 200px 1fr;
-            gap: 18px 25px;
+            gap: 15px 20px;
             align-items: baseline;
+            transition: all 0.3s ease;
+        }
+        .competency-card:last-child {
+            margin-bottom: 0;
+        }
+        .competency-card:hover {
+            border-color: var(--accent-blue);
+            background: var(--pill-hover);
+            transform: translateY(-2px);
         }
         .competency-title {
             font-weight: 700;
@@ -310,8 +324,7 @@
         .ref-title { color: var(--accent-blue); font-size: 0.9rem; font-weight: 600;}
 
         @media (max-width: 768px) { 
-            .competency-grid, .learning-grid { grid-template-columns: 1fr; gap: 5px; margin-bottom: 15px;}
-            .competency-title { margin-top: 10px; }
+            .competency-card, .learning-grid { grid-template-columns: 1fr; gap: 8px; }
             .references-grid { grid-template-columns: 1fr; }
             h1 { font-size: 2rem; }
             .glass-panel { padding: 30px 20px; }
@@ -387,20 +400,29 @@
         </header>
 
         <section class="glass-panel">
-            <h3>COMPETENCIES AND TECHNICAL CAPABILITIES</h3>
-            <div class="competency-grid">
+            <h3>COMPETENCIES</h3>
+            
+            <div class="competency-card">
                 <div class="competency-title">Strategic Growth</div>
                 <div class="competency-desc">Business Intelligence, Dashboards, Team Building, Cross-Functional Collaboration, Tracking.</div>
-                
+            </div>
+            
+            <div class="competency-card">
                 <div class="competency-title">Digital Advertising</div>
                 <div class="competency-desc">Funnel Architecture, Acquisition, Media Buying, Evaluation Metrics.</div>
-                
+            </div>
+            
+            <div class="competency-card">
                 <div class="competency-title">Brand Management</div>
                 <div class="competency-desc">Brand Book, Digital Asset Management, Copywriting, Reputation Management, Positioning.</div>
-                
+            </div>
+            
+            <div class="competency-card">
                 <div class="competency-title">Client Management</div>
                 <div class="competency-desc">Product Ownership, On-boarding, Agile Delivery, Stakeholder Communication, CRM.</div>
-                
+            </div>
+            
+            <div class="competency-card">
                 <div class="competency-title">Marketing Automation</div>
                 <div class="competency-desc">Cross-Channel Orchestration, Lead Nurturing Workflows, Behavioral Trigger Campaigns, Customer Lifecycle Marketing, Retention, Loyalty Programs.</div>
             </div>
@@ -474,7 +496,7 @@
                 </div>
             </div>
 
-            <div class="experience-item">
+            <div class="experience-item" style="padding-bottom: 0; border-bottom: none;">
                 <div class="experience-header">
                     <div class="role-company-wrapper">
                         <span>Digital Marketing Executive</span> <span class="role-separator">|</span> <span>6SENSE TECHNOLOGIES</span>
