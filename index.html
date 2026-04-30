@@ -8,18 +8,18 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
 
         :root {
-            /* Strict Black, White, and Blue Palette */
-            --bg-color: #000000;
-            --text-main: #FFFFFF;
-            --text-muted: #B0B0B0;
-            --accent-blue: #0077FF;
-            --accent-blue-light: #4D9FFF;
-            --accent-blue-dark: #003388;
+            /* Milky White, Black, and Blue Palette */
+            --bg-color: #F8F9FA; /* Milky White */
+            --text-main: #000000; /* Pure Black for headers/main text */
+            --text-muted: #4B5563; /* Dark Gray for secondary text */
+            --accent-blue: #0066FF; /* Primary Blue */
+            --accent-blue-light: #3B82F6;
+            --accent-blue-dark: #0033AA;
             
-            /* Glassmorphism Variables */
-            --glass-bg: rgba(10, 10, 10, 0.6);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --glass-highlight: rgba(0, 119, 255, 0.15);
+            /* Light Glassmorphism Variables */
+            --glass-bg: rgba(255, 255, 255, 0.65);
+            --glass-border: rgba(0, 0, 0, 0.06);
+            --glass-highlight: rgba(255, 255, 255, 0.9);
         }
 
         body, html {
@@ -32,7 +32,7 @@
             line-height: 1.6;
         }
 
-        /* Dynamic Liquid Background - Blue & Black Only */
+        /* Dynamic Liquid Background - Soft Blue on Milky White */
         .background-blobs {
             position: fixed;
             top: 0;
@@ -41,49 +41,49 @@
             height: 100vh;
             z-index: -1;
             overflow: hidden;
-            background: #000000;
+            background: var(--bg-color);
         }
 
         .blob {
             position: absolute;
             border-radius: 50%;
-            filter: blur(120px);
-            opacity: 0.4;
+            filter: blur(100px);
+            opacity: 0.5;
             animation: float 25s infinite alternate ease-in-out;
         }
 
         .blob:nth-child(1) {
             top: -10%; left: -10%; width: 50vw; height: 50vw;
-            background: radial-gradient(circle, var(--accent-blue), var(--accent-blue-dark));
+            background: radial-gradient(circle, rgba(0, 102, 255, 0.15), transparent);
             animation-delay: 0s;
         }
 
         .blob:nth-child(2) {
             bottom: -20%; right: -10%; width: 60vw; height: 60vw;
-            background: radial-gradient(circle, var(--accent-blue-light), #000000);
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.12), transparent);
             animation-delay: -5s;
-            opacity: 0.2;
+            opacity: 0.8;
         }
         
         .blob:nth-child(3) {
             top: 40%; left: 30%; width: 40vw; height: 40vw;
-            background: radial-gradient(circle, var(--accent-blue-dark), transparent);
+            background: radial-gradient(circle, rgba(0, 0, 0, 0.04), transparent);
             animation-delay: -10s;
-            opacity: 0.5;
         }
 
         @keyframes float {
             0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(8vw, 12vh) scale(1.1); }
+            100% { transform: translate(6vw, 10vh) scale(1.1); }
         }
 
-        /* Mature Glassmorphism Core */
+        /* Mature Glassmorphism Core (Light Theme) */
         .glass-panel {
             background: var(--glass-bg);
-            backdrop-filter: blur(24px) saturate(120%);
-            -webkit-backdrop-filter: blur(24px) saturate(120%);
+            backdrop-filter: blur(28px) saturate(140%);
+            -webkit-backdrop-filter: blur(28px) saturate(140%);
             border-radius: 16px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), inset 0 1px 0 var(--glass-highlight);
+            /* Elevation Depth adapted for light mode */
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.04), inset 0 1px 0 var(--glass-highlight);
             position: relative;
             padding: 40px;
             margin-bottom: 30px;
@@ -91,13 +91,14 @@
             z-index: 1;
         }
 
+        /* Light Catcher Borders */
         .glass-panel::before {
             content: "";
             position: absolute;
             inset: 0;
             border-radius: 16px;
             padding: 1px;
-            background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 50%, rgba(0,119,255,0.2) 100%);
+            background: linear-gradient(135deg, rgba(0,102,255,0.3) 0%, rgba(255,255,255,0) 50%, rgba(0,0,0,0.1) 100%);
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
             mask-composite: exclude;
@@ -112,57 +113,57 @@
 
         /* Typography & Layout */
         h1 { font-size: 2.5rem; margin-bottom: 0.2rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;}
-        h2 { font-size: 1.2rem; color: var(--accent-blue); font-weight: 400; margin-bottom: 1rem; letter-spacing: 2px; text-transform: uppercase;}
-        h3 { font-size: 1.3rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px; margin-top: 0; text-transform: uppercase; letter-spacing: 1px;}
-        h4 { font-size: 1.1rem; margin: 0 0 5px 0; font-weight: 600;}
+        h2 { font-size: 1.2rem; color: var(--accent-blue); font-weight: 600; margin-bottom: 1rem; letter-spacing: 2px; text-transform: uppercase;}
+        h3 { font-size: 1.3rem; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 10px; margin-top: 0; text-transform: uppercase; letter-spacing: 1px; color: var(--text-main);}
+        h4 { font-size: 1.1rem; margin: 0 0 5px 0; font-weight: 700;}
         
         p { color: var(--text-muted); margin-bottom: 0.8rem; font-size: 0.95rem; }
         
         .contact-row { display: flex; gap: 15px; flex-wrap: wrap; font-size: 0.9rem; margin-bottom: 5px; align-items: center;}
-        .contact-row a { color: var(--text-main); text-decoration: none; transition: color 0.3s; }
+        .contact-row a { color: var(--text-main); text-decoration: none; transition: color 0.3s; font-weight: 600;}
         .contact-row a:hover { color: var(--accent-blue); }
         .contact-icon { color: var(--accent-blue); font-weight: bold; margin-right: 4px; }
         .separator { color: var(--accent-blue); }
 
-        .summary { margin-top: 25px; font-size: 0.95rem; line-height: 1.7; color: var(--text-main); }
+        .summary { margin-top: 25px; font-size: 0.95rem; line-height: 1.7; color: var(--text-main); font-weight: 400;}
 
         /* Custom Lists mimicking PDF structure */
         .competency-item { margin-bottom: 10px; font-size: 0.95rem;}
-        .competency-title { font-weight: 600; color: var(--accent-blue-light); width: 200px; display: inline-block; }
+        .competency-title { font-weight: 700; color: var(--text-main); width: 200px; display: inline-block; }
         
         .experience-header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; margin-top: 25px; margin-bottom: 10px;}
-        .role-company { font-weight: 600; font-size: 1.1rem; color: var(--text-main); }
-        .date-location { font-size: 0.85rem; color: var(--accent-blue); text-transform: uppercase; font-weight: 600;}
+        .role-company { font-weight: 700; font-size: 1.1rem; color: var(--text-main); }
+        .date-location { font-size: 0.85rem; color: var(--accent-blue); text-transform: uppercase; font-weight: 700;}
         
         ul.custom-bullets { list-style: none; padding-left: 0; margin-top: 5px; margin-bottom: 15px;}
         ul.custom-bullets li { position: relative; padding-left: 20px; margin-bottom: 8px; font-size: 0.95rem; color: var(--text-muted); }
         ul.custom-bullets li::before { content: ">"; position: absolute; left: 0; color: var(--accent-blue); font-weight: bold; }
 
-        .metrics-title { font-size: 0.85rem; font-weight: 600; color: var(--text-main); margin-bottom: 8px; margin-top: 15px;}
+        .metrics-title { font-size: 0.85rem; font-weight: 700; color: var(--text-main); margin-bottom: 8px; margin-top: 15px;}
         .metrics-container { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px;}
         .metric-badge { 
-            background: rgba(0, 119, 255, 0.1); 
-            border: 1px solid var(--accent-blue);
+            background: rgba(0, 102, 255, 0.08); 
+            border: 1px solid rgba(0, 102, 255, 0.2);
             padding: 4px 12px; 
             border-radius: 4px; 
             font-size: 0.8rem; 
-            color: var(--text-main);
-            font-weight: 600;
+            color: var(--accent-blue-dark);
+            font-weight: 700;
         }
 
-        .freelance-links { font-size: 0.85rem; color: var(--accent-blue-light); margin-bottom: 10px; display: flex; gap: 15px;}
-        .freelance-links a { color: var(--accent-blue-light); text-decoration: none;}
+        .freelance-links { font-size: 0.85rem; color: var(--accent-blue); margin-bottom: 10px; display: flex; gap: 15px; font-weight: 600;}
+        .freelance-links a { color: var(--accent-blue); text-decoration: none;}
         .freelance-links a:hover { text-decoration: underline; }
 
         .learning-item { display: flex; margin-bottom: 10px; font-size: 0.95rem;}
-        .learning-date { width: 80px; color: var(--accent-blue); font-weight: 600; flex-shrink: 0;}
+        .learning-date { width: 80px; color: var(--accent-blue); font-weight: 700; flex-shrink: 0;}
         .learning-content { color: var(--text-muted); }
-        .learning-content strong { color: var(--text-main); font-weight: 600;}
+        .learning-content strong { color: var(--text-main); font-weight: 700;}
 
         .references-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;}
         .reference-card p { margin: 2px 0; }
-        .ref-name { font-weight: 600; color: var(--text-main); font-size: 1.05rem;}
-        .ref-title { color: var(--accent-blue-light); font-size: 0.9rem;}
+        .ref-name { font-weight: 700; color: var(--text-main); font-size: 1.05rem;}
+        .ref-title { color: var(--accent-blue); font-size: 0.9rem; font-weight: 600;}
 
         @media (max-width: 768px) { 
             .competency-title { display: block; margin-bottom: 5px; }
@@ -197,7 +198,7 @@
                 <a href="https://github.com/asiflikhon11" target="_blank">github.com/asiflikhon11</a>
             </div>
             <div class="contact-row" style="color: var(--text-muted);">
-                <span>Born on March 09, 1998 (Age 28) in Kushtia, Bangladesh</span>
+                <span>Marking 28 years of existence, born in Kushtia during the বসন্ত of 1998.</span>
             </div>
 
             <div class="summary">
@@ -404,7 +405,7 @@
             </div>
         </section>
         
-        <div style="text-align: center; color: var(--text-muted); font-size: 0.8rem; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 2px;">
+        <div style="text-align: center; color: var(--text-muted); font-size: 0.8rem; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 2px; font-weight: 700;">
             LIKHONS.COM
         </div>
     </div>
