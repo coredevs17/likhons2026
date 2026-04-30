@@ -35,10 +35,13 @@
             
             /* Shared Interactive UI Elements - Light */
             --pill-bg: rgba(0, 102, 255, 0.04);
-            --pill-border: rgba(0, 102, 255, 0.12);
+            --pill-border: rgba(0, 102, 255, 0.15);
             --pill-hover: rgba(0, 102, 255, 0.1);
-            --metric-text: var(--accent-blue-dark);
+            
+            /* Metric Badges (from screenshot) */
             --metric-bg: rgba(0, 102, 255, 0.04);
+            --metric-border: rgba(0, 102, 255, 0.2);
+            --metric-text: var(--accent-blue);
         }
 
         /* DARK MODE OVERRIDES */
@@ -64,8 +67,11 @@
             --pill-bg: rgba(0, 119, 255, 0.08);
             --pill-border: rgba(0, 119, 255, 0.25);
             --pill-hover: rgba(0, 119, 255, 0.18);
-            --metric-text: #FFFFFF;
+            
+            /* Metric Badges - Dark */
             --metric-bg: rgba(0, 119, 255, 0.1);
+            --metric-border: var(--accent-blue-light);
+            --metric-text: #FFFFFF;
         }
 
         body, html {
@@ -153,15 +159,14 @@
         }
         .theme-toggle:hover { transform: scale(1.1) rotate(15deg); background: var(--pill-hover); border-color: var(--accent-blue); }
 
-        /* Contact Pills */
+        /* Contact Section */
         .contact-pills { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 25px; }
-        .contact-pill, .metric-badge {
+        .contact-pill {
             display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 4px;
             background: var(--pill-bg); border: 1px solid var(--pill-border); color: var(--text-main);
             text-decoration: none; font-size: 0.85rem; font-weight: 600; transition: all 0.3s ease; cursor: pointer;
         }
-        .metric-badge { color: var(--metric-text); padding: 4px 12px; cursor: default; background: var(--metric-bg);}
-        .contact-pill:hover, a.contact-pill:hover, .metric-badge:hover {
+        .contact-pill:hover, a.contact-pill:hover {
             border-color: var(--accent-blue); transform: translateY(-2px); background: var(--pill-hover); color: var(--accent-blue);
         }
         .contact-pill svg { width: 15px; height: 15px; color: var(--accent-blue); flex-shrink: 0; }
@@ -173,7 +178,7 @@
 
         /* Typography & Section Titles */
         h3 { font-size: 1.25rem; border-bottom: 1px solid var(--h3-border); padding-bottom: 12px; margin: 0 0 25px 0; text-transform: uppercase; letter-spacing: 1px; color: var(--text-main); font-weight: 700; transition: border-color 0.5s ease;}
-        p { color: var(--text-muted); margin-bottom: 0.8rem; font-size: 0.95rem; transition: color 0.5s ease;}
+        p { color: var(--text-muted); margin-bottom: 0.8rem; font-size: 0.95rem; transition: color 0.5s ease; line-height: 1.6;}
         .summary { margin-top: 15px; font-size: 0.95rem; line-height: 1.7; color: var(--text-main); font-weight: 400;}
 
         /* UX UPGRADE: Competencies Grid Layout */
@@ -203,39 +208,58 @@
         .experience-header {
             display: flex;
             justify-content: space-between;
-            align-items: flex-end;
+            align-items: baseline;
             flex-wrap: wrap;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             gap: 10px;
         }
         .role-company-wrapper {
-            font-size: 1.15rem;
+            font-size: 1.2rem;
             font-weight: 700;
             color: var(--text-main);
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
         }
         .role-separator {
-            font-weight: 300;
+            font-weight: 400;
             color: var(--text-main);
         }
         .date-location {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--accent-blue);
             text-transform: uppercase;
             font-weight: 700;
             letter-spacing: 0.5px;
-            text-align: right;
         }
         
         ul.custom-bullets { list-style: none; padding-left: 0; margin-top: 0; margin-bottom: 15px;}
-        ul.custom-bullets li { position: relative; padding-left: 20px; margin-bottom: 10px; font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;}
+        ul.custom-bullets li { position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;}
         ul.custom-bullets li::before { content: ">"; position: absolute; left: 0; color: var(--accent-blue); font-weight: 700; }
 
-        .metrics-title { font-size: 0.85rem; font-weight: 700; color: var(--text-main); margin-bottom: 10px; margin-top: 20px; display: flex; align-items: center; gap: 5px;}
-        .metrics-title::before { content: ">"; color: var(--text-main); font-weight: 700; }
+        .metrics-title { font-size: 0.85rem; font-weight: 700; color: var(--text-main); margin-bottom: 10px; margin-top: 20px;}
         .metrics-container { display: flex; flex-wrap: wrap; gap: 8px;}
+        
+        /* Metric Badges Exact Match */
+        .metric-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 5px 14px;
+            border-radius: 4px;
+            background: var(--metric-bg);
+            border: 1px solid var(--metric-border);
+            color: var(--metric-text);
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+        .metric-badge:hover {
+            border-color: var(--accent-blue);
+            transform: translateY(-2px);
+            background: var(--pill-hover);
+            color: var(--accent-blue);
+        }
 
         /* UX UPGRADE: Learning & Freelance adjustments */
         .freelance-links { font-size: 0.85rem; color: var(--accent-blue); margin-bottom: 12px; display: flex; gap: 15px; font-weight: 600;}
@@ -260,10 +284,9 @@
         @media (max-width: 768px) { 
             .competency-grid, .learning-grid { grid-template-columns: 1fr; gap: 5px; margin-bottom: 15px;}
             .competency-title { margin-top: 10px; }
-            .experience-header { flex-direction: column; align-items: flex-start; }
-            .date-location { text-align: left; }
             .references-grid { grid-template-columns: 1fr; }
             h1 { font-size: 2rem; }
+            .glass-panel { padding: 30px 20px; }
         }
     </style>
 </head>
@@ -370,7 +393,7 @@
                     <li>Acting as a product Owner to oversee in-house product development</li>
                     <li>Streamlining marketing efforts to drive sustainable business growth</li>
                 </ul>
-                <div class="metrics-title">Key Measurement Metrics</div>
+                <div class="metrics-title">&gt; Key Measurement Metrics</div>
                 <div class="metrics-container">
                     <span class="metric-badge">CRR</span><span class="metric-badge">LTV</span><span class="metric-badge">TTV</span><span class="metric-badge">MQL-to-SQL</span><span class="metric-badge">Churn</span>
                 </div>
@@ -389,7 +412,7 @@
                     <li>Aligned vision, mission and revenue projections. Transforming the organization into a scalable startup</li>
                     <li>Developed omni-channel and B2B sales funnels, on-boarding major clients including Yamaha, Waffle-Up, and BRAC University.</li>
                 </ul>
-                <div class="metrics-title">Key Measurement Metrics</div>
+                <div class="metrics-title">&gt; Key Measurement Metrics</div>
                 <div class="metrics-container">
                     <span class="metric-badge">CAC</span><span class="metric-badge">LTV:CAC Ratio</span><span class="metric-badge">ROAS</span><span class="metric-badge">MRR</span><span class="metric-badge">ARR</span><span class="metric-badge">CR</span>
                 </div>
@@ -408,7 +431,7 @@
                     <li>Delivered growth strategies for 5+ blockchain projects and provided initial marketing plans</li>
                     <li>Up-sold to existing client base and introduced HubSpot for CRM maintenance</li>
                 </ul>
-                <div class="metrics-title">Key Measurement Metrics</div>
+                <div class="metrics-title">&gt; Key Measurement Metrics</div>
                 <div class="metrics-container">
                     <span class="metric-badge">New-Revenue</span><span class="metric-badge">Upsell-Rate</span><span class="metric-badge">Lead-Volume</span><span class="metric-badge">Win-Rate</span>
                 </div>
@@ -426,7 +449,7 @@
                     <li>Breaking Mars: Launched Bangladesh's first LinkedIn outreach SaaS tool. Managed $10K monthly ad spend, onboarded 1K paying customers, and integrated HubSpot. Partnered with SaaS marketplaces for brand reputation.</li>
                     <li>Established the firm's online presence on platforms like GoodFirms and Clutch.</li>
                 </ul>
-                <div class="metrics-title">Key Measurement Metrics</div>
+                <div class="metrics-title">&gt; Key Measurement Metrics</div>
                 <div class="metrics-container">
                     <span class="metric-badge">PPC</span><span class="metric-badge">CTR</span><span class="metric-badge">CAC</span><span class="metric-badge">LTV</span><span class="metric-badge">ROAS</span><span class="metric-badge">MRR</span><span class="metric-badge">MAU</span><span class="metric-badge">CVR</span>
                 </div>
@@ -572,7 +595,6 @@
         const themeIcon = document.getElementById('theme-icon');
         const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 
-        // Apply theme and update icon
         function applyTheme(isDark) {
             if (isDark) {
                 document.body.classList.add('dark-mode');
@@ -583,26 +605,25 @@
             }
         }
 
-        // 1. Initialize on Load
+        // Initialize theme on load
         const savedTheme = localStorage.getItem('portfolio_theme');
         if (savedTheme === 'dark') {
-            applyTheme(true); // User previously chose dark
+            applyTheme(true);
         } else if (savedTheme === 'light') {
-            applyTheme(false); // User previously chose light
+            applyTheme(false);
         } else {
-            applyTheme(prefersDarkScheme.matches); // No choice saved, follow browser system preference
+            applyTheme(prefersDarkScheme.matches); 
         }
 
-        // 2. Manual Toggle Button Function
+        // Manual Toggle Button
         function toggleTheme() {
             const isDark = !document.body.classList.contains('dark-mode');
             applyTheme(isDark);
-            localStorage.setItem('portfolio_theme', isDark ? 'dark' : 'light'); // Save explicit choice
+            localStorage.setItem('portfolio_theme', isDark ? 'dark' : 'light'); 
         }
 
-        // 3. Listen for System Theme Changes in Real-Time
+        // Real-Time System Theme Listener
         prefersDarkScheme.addEventListener('change', (e) => {
-            // Only auto-switch if the user hasn't explicitly set a preference via the button
             if (!localStorage.getItem('portfolio_theme')) {
                 applyTheme(e.matches);
             }
