@@ -38,7 +38,7 @@
             --pill-border: rgba(0, 102, 255, 0.15);
             --pill-hover: rgba(0, 102, 255, 0.1);
             
-            /* Metric Badges (from screenshot) */
+            /* Metric Badges */
             --metric-bg: rgba(0, 102, 255, 0.04);
             --metric-border: rgba(0, 102, 255, 0.2);
             --metric-text: var(--accent-blue);
@@ -202,8 +202,14 @@
         }
 
         /* UX UPGRADE: Professional Experiences Layout */
-        .experience-item { margin-bottom: 35px; }
-        .experience-item:last-child { margin-bottom: 0; }
+        .experience-item { margin-bottom: 30px; }
+        
+        /* Subtle Separator between experiences */
+        .experience-item:not(:last-child) {
+            padding-bottom: 30px;
+            border-bottom: 1px dashed var(--h3-border);
+            transition: border-color 0.5s ease;
+        }
         
         .experience-header {
             display: flex;
@@ -234,10 +240,32 @@
         }
         
         ul.custom-bullets { list-style: none; padding-left: 0; margin-top: 0; margin-bottom: 15px;}
-        ul.custom-bullets li { position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;}
-        ul.custom-bullets li::before { content: ">"; position: absolute; left: 0; color: var(--accent-blue); font-weight: 700; }
+        ul.custom-bullets li { position: relative; padding-left: 24px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;}
+        
+        /* Custom SVG Bullet Icon */
+        ul.custom-bullets li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 14px;
+            height: 14px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230066FF' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='9 18 15 12 9 6'%3E%3C/polyline%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
 
-        .metrics-title { font-size: 0.85rem; font-weight: 700; color: var(--text-main); margin-bottom: 10px; margin-top: 20px;}
+        .metrics-title { 
+            font-size: 0.85rem; 
+            font-weight: 700; 
+            color: var(--text-main); 
+            margin-bottom: 10px; 
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
         .metrics-container { display: flex; flex-wrap: wrap; gap: 8px;}
         
         /* Metric Badges Exact Match */
@@ -393,7 +421,10 @@
                     <li>Acting as a product Owner to oversee in-house product development</li>
                     <li>Streamlining marketing efforts to drive sustainable business growth</li>
                 </ul>
-                <div class="metrics-title">&gt; Key Measurement Metrics</div>
+                <div class="metrics-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px; color: var(--accent-blue);"><path d="M3 3v18h18"></path><path d="M18 9l-5 5-4-4-5 5"></path></svg>
+                    Key Measurement Metrics
+                </div>
                 <div class="metrics-container">
                     <span class="metric-badge">CRR</span><span class="metric-badge">LTV</span><span class="metric-badge">TTV</span><span class="metric-badge">MQL-to-SQL</span><span class="metric-badge">Churn</span>
                 </div>
@@ -412,7 +443,10 @@
                     <li>Aligned vision, mission and revenue projections. Transforming the organization into a scalable startup</li>
                     <li>Developed omni-channel and B2B sales funnels, on-boarding major clients including Yamaha, Waffle-Up, and BRAC University.</li>
                 </ul>
-                <div class="metrics-title">&gt; Key Measurement Metrics</div>
+                <div class="metrics-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px; color: var(--accent-blue);"><path d="M3 3v18h18"></path><path d="M18 9l-5 5-4-4-5 5"></path></svg>
+                    Key Measurement Metrics
+                </div>
                 <div class="metrics-container">
                     <span class="metric-badge">CAC</span><span class="metric-badge">LTV:CAC Ratio</span><span class="metric-badge">ROAS</span><span class="metric-badge">MRR</span><span class="metric-badge">ARR</span><span class="metric-badge">CR</span>
                 </div>
@@ -431,7 +465,10 @@
                     <li>Delivered growth strategies for 5+ blockchain projects and provided initial marketing plans</li>
                     <li>Up-sold to existing client base and introduced HubSpot for CRM maintenance</li>
                 </ul>
-                <div class="metrics-title">&gt; Key Measurement Metrics</div>
+                <div class="metrics-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px; color: var(--accent-blue);"><path d="M3 3v18h18"></path><path d="M18 9l-5 5-4-4-5 5"></path></svg>
+                    Key Measurement Metrics
+                </div>
                 <div class="metrics-container">
                     <span class="metric-badge">New-Revenue</span><span class="metric-badge">Upsell-Rate</span><span class="metric-badge">Lead-Volume</span><span class="metric-badge">Win-Rate</span>
                 </div>
@@ -449,7 +486,10 @@
                     <li>Breaking Mars: Launched Bangladesh's first LinkedIn outreach SaaS tool. Managed $10K monthly ad spend, onboarded 1K paying customers, and integrated HubSpot. Partnered with SaaS marketplaces for brand reputation.</li>
                     <li>Established the firm's online presence on platforms like GoodFirms and Clutch.</li>
                 </ul>
-                <div class="metrics-title">&gt; Key Measurement Metrics</div>
+                <div class="metrics-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px; color: var(--accent-blue);"><path d="M3 3v18h18"></path><path d="M18 9l-5 5-4-4-5 5"></path></svg>
+                    Key Measurement Metrics
+                </div>
                 <div class="metrics-container">
                     <span class="metric-badge">PPC</span><span class="metric-badge">CTR</span><span class="metric-badge">CAC</span><span class="metric-badge">LTV</span><span class="metric-badge">ROAS</span><span class="metric-badge">MRR</span><span class="metric-badge">MAU</span><span class="metric-badge">CVR</span>
                 </div>
@@ -471,7 +511,7 @@
                     <a href="https://kolom.ai" target="_blank">kolom.ai</a>
                 </div>
                 <p>Coordinating the Go-To-Market strategy for this AI-powered news platform. Defining product requirements, overseeing legislative compliance, forecasting marketing budgets, and establishing core PMF evaluation metrics.</p>
-                <div class="metrics-container">
+                <div class="metrics-container" style="margin-top: 15px;">
                     <span class="metric-badge">PMF-Validation</span><span class="metric-badge">GTM</span><span class="metric-badge">Compliance</span><span class="metric-badge">Forecasting</span>
                 </div>
             </div>
@@ -488,7 +528,7 @@
                     <a href="#">LinkedIn</a>
                 </div>
                 <p>Contributed to automating email marketing initiatives and drip campaigns using Klaviyo. Oversaw lead list building, cold outreach execution, and continuous KPI tracking to optimize user engagement and retention workflows.</p>
-                <div class="metrics-container">
+                <div class="metrics-container" style="margin-top: 15px;">
                     <span class="metric-badge">Klaviyo</span><span class="metric-badge">Email-Automation</span><span class="metric-badge">Lead-Nurturing</span><span class="metric-badge">KPIs</span><span class="metric-badge">Cold-Email</span>
                 </div>
             </div>
@@ -505,7 +545,7 @@
                     <a href="#">LinkedIn</a>
                 </div>
                 <p>Curated growth plans and omni-channel marketing funnels, successfully onboarding $50K USD in net-new clients. Leveraged HubSpot automation and integrated CRM systems for rapid business scaling.</p>
-                <div class="metrics-container">
+                <div class="metrics-container" style="margin-top: 15px;">
                     <span class="metric-badge">HubSpot</span><span class="metric-badge">CRM</span><span class="metric-badge">Growth-Funnels</span><span class="metric-badge">Omnichannel</span>
                 </div>
             </div>
@@ -522,12 +562,12 @@
                     <a href="#">LinkedIn</a>
                 </div>
                 <p>Initiated the digital agency launch and cross-platform presence across B2B marketplaces (G2, Clutch). Orchestrated digital asset management, CRM integration, and B2B growth hacking strategies to successfully onboard 5 enterprise clients.</p>
-                <div class="metrics-container">
+                <div class="metrics-container" style="margin-top: 15px;">
                     <span class="metric-badge">Growth-Hacking</span><span class="metric-badge">B2B-Acquisition</span><span class="metric-badge">Digital-Presence</span><span class="metric-badge">CRM-Integration</span><span class="metric-badge">DAM</span>
                 </div>
             </div>
 
-            <div class="experience-item" style="margin-bottom: 0;">
+            <div class="experience-item" style="margin-bottom: 0; padding-bottom: 0; border-bottom: none;">
                 <div class="experience-header">
                     <div class="role-company-wrapper">
                         <span>FILM MANIA</span>
@@ -539,7 +579,7 @@
                     <a href="#">Showreel-2024</a>
                 </div>
                 <p>Provide ongoing strategic support for commercial production (TVC/OVC), specializing in brand storytelling and content distribution. Manage targeted media buying and facilitate key client relationship management.</p>
-                <div class="metrics-container">
+                <div class="metrics-container" style="margin-top: 15px;">
                     <span class="metric-badge">Brand-Storytelling</span><span class="metric-badge">Media-Buying</span><span class="metric-badge">Distribution</span><span class="metric-badge">Copywriting</span>
                 </div>
             </div>
