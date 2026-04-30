@@ -147,10 +147,27 @@
 
         .container { max-width: 900px; margin: 60px auto; padding: 0 20px; }
 
-        /* Header Layout & Theme Toggle */
+        /* Profile Header with Image & Title */
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+        .profile-image-container img {
+            width: 100px;
+            height: 100px;
+            border-radius: 8px;
+            object-fit: cover;
+            border: 2px solid var(--glass-border);
+            background: var(--pill-bg);
+            padding: 4px;
+            transition: border-color 0.5s ease;
+        }
+        
         .header-title-row { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
         h1 { font-size: 2.5rem; margin: 0; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;}
-        h2 { font-size: 1.2rem; color: var(--accent-blue); font-weight: 600; margin: 5px 0 1rem 0; letter-spacing: 2px; text-transform: uppercase;}
+        h2 { font-size: 1.2rem; color: var(--accent-blue); font-weight: 600; margin: 5px 0 0 0; letter-spacing: 2px; text-transform: uppercase;}
         
         .theme-toggle {
             background: transparent; border: 1px solid var(--glass-border); color: var(--accent-blue);
@@ -182,7 +199,7 @@
             position: absolute;
             inset: 0;
             border-radius: 4px;
-            padding: 2px; /* Border thickness */
+            padding: 2px;
             background: linear-gradient(90deg, var(--accent-blue), #00d2ff, var(--accent-blue-light), var(--accent-blue));
             background-size: 200% auto;
             animation: gradientBorderAnim 3s linear infinite;
@@ -349,7 +366,47 @@
         .ref-name { font-weight: 700; color: var(--text-main); font-size: 1.05rem;}
         .ref-title { color: var(--accent-blue); font-size: 0.9rem; font-weight: 600;}
 
+        /* Footer Settings */
+        .site-footer {
+            text-align: center;
+            padding: 20px 0 40px 0;
+            color: var(--text-muted);
+            border-top: 1px solid var(--h3-border);
+            margin-top: 40px;
+            transition: border-color 0.5s ease;
+        }
+        .site-footer p { font-size: 0.9rem; margin: 0; font-weight: 500;}
+        .footer-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .footer-icons a {
+            color: var(--text-muted);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 4px;
+            background: var(--pill-bg);
+            border: 1px solid var(--pill-border);
+        }
+        .footer-icons a:hover {
+            color: var(--accent-blue);
+            border-color: var(--accent-blue);
+            background: var(--pill-hover);
+            transform: translateY(-3px);
+        }
+        .footer-icons svg {
+            width: 18px;
+            height: 18px;
+        }
+
         @media (max-width: 768px) { 
+            .profile-header { flex-direction: column; align-items: flex-start; gap: 15px; }
             .competency-card, .learning-grid { grid-template-columns: 1fr; gap: 8px; }
             .references-grid { grid-template-columns: 1fr; }
             h1 { font-size: 2rem; }
@@ -367,14 +424,23 @@
 
     <div class="container">
         <header class="glass-panel">
-            <div class="header-title-row">
-                <h1>Asif Shariar LIKHON</h1>
-                <button class="theme-toggle" id="themeToggleBtn" aria-label="Toggle Dark Mode" onclick="toggleTheme()">
-                    <svg id="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        </svg>
-                </button>
+            
+            <div class="profile-header">
+                <div class="profile-image-container">
+                    <img src="https://drive.google.com/uc?export=view&id=1LL91Ig-7B-81eWgkiigwECH0euFpTS61" alt="Asif Shariar Likhon">
+                </div>
+                
+                <div class="profile-title-container">
+                    <div class="header-title-row">
+                        <h1>Asif Shariar LIKHON</h1>
+                        <button class="theme-toggle" id="themeToggleBtn" aria-label="Toggle Dark Mode" onclick="toggleTheme()">
+                            <svg id="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                </svg>
+                        </button>
+                    </div>
+                    <h2>Marketer | Entrepreneur</h2>
+                </div>
             </div>
-            <h2>Marketer | Entrepreneur</h2>
             
             <div class="contact-pills">
                 <a href="https://linkedin.com/in/asiflikhon11" target="_blank" class="contact-pill">
@@ -678,9 +744,31 @@
             </div>
         </section>
         
-        <div style="text-align: center; color: var(--text-muted); font-size: 0.8rem; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 2px; font-weight: 700;">
-            LIKHONS.COM
-        </div>
+        <footer class="site-footer">
+            <div class="footer-icons">
+                <a href="https://linkedin.com/in/asiflikhon11" target="_blank" aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                </a>
+                <a href="tel:+8801705502043" aria-label="Phone">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                </a>
+                <a href="mailto:hi@likhons.com" aria-label="Email">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                </a>
+                <a href="https://github.com/asiflikhon11" target="_blank" aria-label="GitHub">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                </a>
+            </div>
+            <p>&copy; 2026 Asif Shariar Likhon. All rights reserved.</p>
+        </footer>
     </div>
 
     <script>
