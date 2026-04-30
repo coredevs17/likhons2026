@@ -10,18 +10,56 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
 
         :root {
-            /* Milky White, Black, and Blue Palette */
-            --bg-color: #F8F9FA; /* Milky White */
-            --text-main: #000000; /* Pure Black for headers/main text */
-            --text-muted: #4B5563; /* Dark Gray for secondary text */
-            --accent-blue: #0066FF; /* Primary Blue */
+            /* Base Colors */
+            --accent-blue: #0066FF;
             --accent-blue-light: #3B82F6;
             --accent-blue-dark: #0033AA;
+
+            /* LIGHT MODE (Default) */
+            --bg-color: #F8F9FA; 
+            --text-main: #000000; 
+            --text-muted: #4B5563; 
             
-            /* Light Glassmorphism Variables */
             --glass-bg: rgba(255, 255, 255, 0.65);
             --glass-border: rgba(0, 0, 0, 0.06);
             --glass-highlight: rgba(255, 255, 255, 0.9);
+            --glass-shadow: 0 25px 50px rgba(0, 0, 0, 0.04);
+            --glass-before-gradient: linear-gradient(135deg, rgba(0,102,255,0.3) 0%, rgba(255,255,255,0) 50%, rgba(0,0,0,0.1) 100%);
+            
+            --blob-1: radial-gradient(circle, rgba(0, 102, 255, 0.15), transparent);
+            --blob-2: radial-gradient(circle, rgba(59, 130, 246, 0.12), transparent);
+            --blob-3: radial-gradient(circle, rgba(0, 0, 0, 0.04), transparent);
+            --blob-2-opacity: 0.8;
+
+            --h3-border: rgba(0,0,0,0.1);
+            --metric-bg: rgba(0, 102, 255, 0.08);
+            --metric-border: rgba(0, 102, 255, 0.2);
+            --metric-text: var(--accent-blue-dark);
+            --metric-weight: 700;
+        }
+
+        /* DARK MODE OVERRIDES */
+        body.dark-mode {
+            --bg-color: #000000;
+            --text-main: #FFFFFF;
+            --text-muted: #B0B0B0;
+            
+            --glass-bg: rgba(10, 10, 10, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-highlight: rgba(0, 119, 255, 0.15);
+            --glass-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+            --glass-before-gradient: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 50%, rgba(0,119,255,0.2) 100%);
+            
+            --blob-1: radial-gradient(circle, var(--accent-blue), var(--accent-blue-dark));
+            --blob-2: radial-gradient(circle, var(--accent-blue-light), #000000);
+            --blob-3: radial-gradient(circle, var(--accent-blue-dark), transparent);
+            --blob-2-opacity: 0.2;
+
+            --h3-border: var(--glass-border);
+            --metric-bg: rgba(0, 119, 255, 0.1);
+            --metric-border: var(--accent-blue);
+            --metric-text: #FFFFFF;
+            --metric-weight: 600;
         }
 
         body, html {
@@ -32,9 +70,35 @@
             color: var(--text-main);
             overflow-x: hidden;
             line-height: 1.6;
+            transition: background-color 0.5s ease, color 0.5s ease;
         }
 
-        /* Dynamic Liquid Background - Soft Blue on Milky White */
+        /* Theme Toggle Button */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: var(--glass-bg);
+            backdrop-filter: blur(28px) saturate(140%);
+            -webkit-backdrop-filter: blur(28px) saturate(140%);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+            color: var(--accent-blue);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.3s ease, background 0.5s ease;
+        }
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* Dynamic Liquid Background */
         .background-blobs {
             position: fixed;
             top: 0;
@@ -44,6 +108,7 @@
             z-index: -1;
             overflow: hidden;
             background: var(--bg-color);
+            transition: background-color 0.5s ease;
         }
 
         .blob {
@@ -52,24 +117,25 @@
             filter: blur(100px);
             opacity: 0.5;
             animation: float 25s infinite alternate ease-in-out;
+            transition: background 0.5s ease, opacity 0.5s ease;
         }
 
         .blob:nth-child(1) {
             top: -10%; left: -10%; width: 50vw; height: 50vw;
-            background: radial-gradient(circle, rgba(0, 102, 255, 0.15), transparent);
+            background: var(--blob-1);
             animation-delay: 0s;
         }
 
         .blob:nth-child(2) {
             bottom: -20%; right: -10%; width: 60vw; height: 60vw;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.12), transparent);
+            background: var(--blob-2);
             animation-delay: -5s;
-            opacity: 0.8;
+            opacity: var(--blob-2-opacity);
         }
         
         .blob:nth-child(3) {
             top: 40%; left: 30%; width: 40vw; height: 40vw;
-            background: radial-gradient(circle, rgba(0, 0, 0, 0.04), transparent);
+            background: var(--blob-3);
             animation-delay: -10s;
         }
 
@@ -78,33 +144,33 @@
             100% { transform: translate(6vw, 10vh) scale(1.1); }
         }
 
-        /* Mature Glassmorphism Core (Light Theme) */
+        /* Mature Glassmorphism Core */
         .glass-panel {
             background: var(--glass-bg);
             backdrop-filter: blur(28px) saturate(140%);
             -webkit-backdrop-filter: blur(28px) saturate(140%);
             border-radius: 16px;
-            /* Elevation Depth adapted for light mode */
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.04), inset 0 1px 0 var(--glass-highlight);
+            box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-highlight);
             position: relative;
             padding: 40px;
             margin-bottom: 30px;
             border: 1px solid var(--glass-border);
             z-index: 1;
+            transition: background 0.5s ease, box-shadow 0.5s ease, border-color 0.5s ease;
         }
 
-        /* Light Catcher Borders */
         .glass-panel::before {
             content: "";
             position: absolute;
             inset: 0;
             border-radius: 16px;
             padding: 1px;
-            background: linear-gradient(135deg, rgba(0,102,255,0.3) 0%, rgba(255,255,255,0) 50%, rgba(0,0,0,0.1) 100%);
+            background: var(--glass-before-gradient);
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
             mask-composite: exclude;
             pointer-events: none;
+            transition: background 0.5s ease;
         }
 
         .container {
@@ -116,10 +182,10 @@
         /* Typography & Layout */
         h1 { font-size: 2.5rem; margin-bottom: 0.2rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;}
         h2 { font-size: 1.2rem; color: var(--accent-blue); font-weight: 600; margin-bottom: 1rem; letter-spacing: 2px; text-transform: uppercase;}
-        h3 { font-size: 1.3rem; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 10px; margin-top: 0; text-transform: uppercase; letter-spacing: 1px; color: var(--text-main);}
+        h3 { font-size: 1.3rem; border-bottom: 1px solid var(--h3-border); padding-bottom: 10px; margin-top: 0; text-transform: uppercase; letter-spacing: 1px; color: var(--text-main); transition: border-color 0.5s ease;}
         h4 { font-size: 1.1rem; margin: 0 0 5px 0; font-weight: 700;}
         
-        p { color: var(--text-muted); margin-bottom: 0.8rem; font-size: 0.95rem; }
+        p { color: var(--text-muted); margin-bottom: 0.8rem; font-size: 0.95rem; transition: color 0.5s ease;}
         
         .contact-row { display: flex; gap: 15px; flex-wrap: wrap; font-size: 0.9rem; margin-bottom: 5px; align-items: center;}
         .contact-row a { color: var(--text-main); text-decoration: none; transition: color 0.3s; font-weight: 600;}
@@ -129,7 +195,7 @@
 
         .summary { margin-top: 25px; font-size: 0.95rem; line-height: 1.7; color: var(--text-main); font-weight: 400;}
 
-        /* Custom Lists mimicking PDF structure */
+        /* Custom Lists */
         .competency-item { margin-bottom: 10px; font-size: 0.95rem;}
         .competency-title { font-weight: 700; color: var(--text-main); width: 200px; display: inline-block; }
         
@@ -144,13 +210,14 @@
         .metrics-title { font-size: 0.85rem; font-weight: 700; color: var(--text-main); margin-bottom: 8px; margin-top: 15px;}
         .metrics-container { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px;}
         .metric-badge { 
-            background: rgba(0, 102, 255, 0.08); 
-            border: 1px solid rgba(0, 102, 255, 0.2);
+            background: var(--metric-bg); 
+            border: 1px solid var(--metric-border);
             padding: 4px 12px; 
             border-radius: 4px; 
             font-size: 0.8rem; 
-            color: var(--accent-blue-dark);
-            font-weight: 700;
+            color: var(--metric-text);
+            font-weight: var(--metric-weight);
+            transition: all 0.5s ease;
         }
 
         .freelance-links { font-size: 0.85rem; color: var(--accent-blue); margin-bottom: 10px; display: flex; gap: 15px; font-weight: 600;}
@@ -171,10 +238,17 @@
             .competency-title { display: block; margin-bottom: 5px; }
             .experience-header { flex-direction: column; }
             .references-grid { grid-template-columns: 1fr; }
+            .theme-toggle { top: 15px; right: 15px; left: auto; } /* Move to right on mobile to avoid overlapping content */
         }
     </style>
 </head>
 <body>
+
+    <button class="theme-toggle" id="themeToggleBtn" aria-label="Toggle Dark Mode" onclick="toggleTheme()">
+        <svg id="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+    </button>
 
     <div class="background-blobs">
         <div class="blob"></div>
@@ -206,7 +280,7 @@
                         <circle cx="12" cy="10" r="3"></circle>
                     </svg>
                 </span>
-                <span>889 Apollo Rd, Dhaka - 1229. </span>
+                <span>889 Apollo Rd, Dhaka 1229</span>
                 <span class="separator">|</span>
                 <a href="https://github.com/asiflikhon11" target="_blank">github.com/asiflikhon11</a>
             </div>
@@ -420,5 +494,28 @@
             LIKHONS.COM
         </div>
     </div>
+
+    <script>
+        const sunIcon = `<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>`;
+        const moonIcon = `<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>`;
+        
+        function toggleTheme() {
+            const body = document.body;
+            body.classList.toggle('dark-mode');
+            const isDark = body.classList.contains('dark-mode');
+            
+            // Save preference
+            localStorage.setItem('portfolio_theme', isDark ? 'dark' : 'light');
+            
+            // Update Icon
+            document.getElementById('theme-icon').innerHTML = isDark ? sunIcon : moonIcon;
+        }
+
+        // Check user's saved preference on load
+        if (localStorage.getItem('portfolio_theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            document.getElementById('theme-icon').innerHTML = sunIcon;
+        }
+    </script>
 </body>
 </html>
