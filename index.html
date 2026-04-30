@@ -5,28 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Asif Shariar LIKHON | Marketer & Entrepreneur</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
 
         :root {
-            --glass-bg: rgba(20, 25, 35, 0.4);
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --glass-highlight: rgba(255, 255, 255, 0.15);
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --accent: #38bdf8;
+            /* Strict Black, White, and Blue Palette */
+            --bg-color: #000000;
+            --text-main: #FFFFFF;
+            --text-muted: #B0B0B0;
+            --accent-blue: #0077FF;
+            --accent-blue-light: #4D9FFF;
+            --accent-blue-dark: #003388;
+            
+            /* Glassmorphism Variables */
+            --glass-bg: rgba(10, 10, 10, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-highlight: rgba(0, 119, 255, 0.15);
         }
 
         body, html {
             margin: 0;
             padding: 0;
-            background-color: #020617;
+            background-color: var(--bg-color);
             font-family: 'Inter', sans-serif;
             color: var(--text-main);
             overflow-x: hidden;
             line-height: 1.6;
         }
 
-        /* Dynamic Liquid Background */
+        /* Dynamic Liquid Background - Blue & Black Only */
         .background-blobs {
             position: fixed;
             top: 0;
@@ -35,52 +41,52 @@
             height: 100vh;
             z-index: -1;
             overflow: hidden;
-            background: #020617;
+            background: #000000;
         }
 
         .blob {
             position: absolute;
             border-radius: 50%;
-            filter: blur(100px);
-            opacity: 0.5;
-            animation: float 20s infinite alternate ease-in-out;
+            filter: blur(120px);
+            opacity: 0.4;
+            animation: float 25s infinite alternate ease-in-out;
         }
 
         .blob:nth-child(1) {
             top: -10%; left: -10%; width: 50vw; height: 50vw;
-            background: radial-gradient(circle, #38bdf8, #0369a1);
+            background: radial-gradient(circle, var(--accent-blue), var(--accent-blue-dark));
             animation-delay: 0s;
         }
 
         .blob:nth-child(2) {
             bottom: -20%; right: -10%; width: 60vw; height: 60vw;
-            background: radial-gradient(circle, #818cf8, #3730a3);
+            background: radial-gradient(circle, var(--accent-blue-light), #000000);
             animation-delay: -5s;
+            opacity: 0.2;
         }
         
         .blob:nth-child(3) {
-            top: 40%; left: 40%; width: 40vw; height: 40vw;
-            background: radial-gradient(circle, #2dd4bf, #0f766e);
+            top: 40%; left: 30%; width: 40vw; height: 40vw;
+            background: radial-gradient(circle, var(--accent-blue-dark), transparent);
             animation-delay: -10s;
-            opacity: 0.3;
+            opacity: 0.5;
         }
 
         @keyframes float {
             0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(10vw, 15vh) scale(1.2); }
+            100% { transform: translate(8vw, 12vh) scale(1.1); }
         }
 
         /* Mature Glassmorphism Core */
         .glass-panel {
             background: var(--glass-bg);
-            backdrop-filter: blur(24px) saturate(150%);
-            -webkit-backdrop-filter: blur(24px) saturate(150%);
-            border-radius: 20px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 var(--glass-highlight);
+            backdrop-filter: blur(24px) saturate(120%);
+            -webkit-backdrop-filter: blur(24px) saturate(120%);
+            border-radius: 16px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), inset 0 1px 0 var(--glass-highlight);
             position: relative;
             padding: 40px;
             margin-bottom: 30px;
-            /* Light Catcher Border */
             border: 1px solid var(--glass-border);
             z-index: 1;
         }
@@ -89,9 +95,9 @@
             content: "";
             position: absolute;
             inset: 0;
-            border-radius: 20px;
+            border-radius: 16px;
             padding: 1px;
-            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,0.05) 100%);
+            background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 50%, rgba(0,119,255,0.2) 100%);
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
             mask-composite: exclude;
@@ -104,32 +110,65 @@
             padding: 0 20px;
         }
 
-        h1 { font-size: 2.5rem; margin-bottom: 0.2rem; font-weight: 600; }
-        h2 { font-size: 1.2rem; color: var(--accent); font-weight: 400; margin-bottom: 1.5rem; letter-spacing: 1px;}
-        h3 { font-size: 1.3rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px; margin-top: 0; }
-        h4 { font-size: 1.1rem; margin: 0 0 5px 0; color: #fff;}
+        /* Typography & Layout */
+        h1 { font-size: 2.5rem; margin-bottom: 0.2rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;}
+        h2 { font-size: 1.2rem; color: var(--accent-blue); font-weight: 400; margin-bottom: 1rem; letter-spacing: 2px; text-transform: uppercase;}
+        h3 { font-size: 1.3rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px; margin-top: 0; text-transform: uppercase; letter-spacing: 1px;}
+        h4 { font-size: 1.1rem; margin: 0 0 5px 0; font-weight: 600;}
         
-        p { color: var(--text-muted); margin-bottom: 1rem; }
-        .contact-info { display: flex; gap: 15px; flex-wrap: wrap; font-size: 0.9rem; }
-        .contact-info a { color: var(--text-muted); text-decoration: none; transition: color 0.3s; }
-        .contact-info a:hover { color: var(--accent); }
+        p { color: var(--text-muted); margin-bottom: 0.8rem; font-size: 0.95rem; }
+        
+        .contact-row { display: flex; gap: 15px; flex-wrap: wrap; font-size: 0.9rem; margin-bottom: 5px; align-items: center;}
+        .contact-row a { color: var(--text-main); text-decoration: none; transition: color 0.3s; }
+        .contact-row a:hover { color: var(--accent-blue); }
+        .contact-icon { color: var(--accent-blue); font-weight: bold; margin-right: 4px; }
+        .separator { color: var(--accent-blue); }
 
-        .timeline-item { margin-bottom: 25px; }
-        .timeline-date { font-size: 0.85rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.5px; }
+        .summary { margin-top: 25px; font-size: 0.95rem; line-height: 1.7; color: var(--text-main); }
+
+        /* Custom Lists mimicking PDF structure */
+        .competency-item { margin-bottom: 10px; font-size: 0.95rem;}
+        .competency-title { font-weight: 600; color: var(--accent-blue-light); width: 200px; display: inline-block; }
         
-        .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
-        .tag { 
-            background: rgba(255,255,255,0.05); 
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 4px 10px; 
-            border-radius: 20px; 
-            font-size: 0.75rem; 
-            color: #cbd5e1;
+        .experience-header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; margin-top: 25px; margin-bottom: 10px;}
+        .role-company { font-weight: 600; font-size: 1.1rem; color: var(--text-main); }
+        .date-location { font-size: 0.85rem; color: var(--accent-blue); text-transform: uppercase; font-weight: 600;}
+        
+        ul.custom-bullets { list-style: none; padding-left: 0; margin-top: 5px; margin-bottom: 15px;}
+        ul.custom-bullets li { position: relative; padding-left: 20px; margin-bottom: 8px; font-size: 0.95rem; color: var(--text-muted); }
+        ul.custom-bullets li::before { content: ">"; position: absolute; left: 0; color: var(--accent-blue); font-weight: bold; }
+
+        .metrics-title { font-size: 0.85rem; font-weight: 600; color: var(--text-main); margin-bottom: 8px; margin-top: 15px;}
+        .metrics-container { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px;}
+        .metric-badge { 
+            background: rgba(0, 119, 255, 0.1); 
+            border: 1px solid var(--accent-blue);
+            padding: 4px 12px; 
+            border-radius: 4px; 
+            font-size: 0.8rem; 
+            color: var(--text-main);
+            font-weight: 600;
         }
 
-        /* Grid for modern layout */
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        @media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } }
+        .freelance-links { font-size: 0.85rem; color: var(--accent-blue-light); margin-bottom: 10px; display: flex; gap: 15px;}
+        .freelance-links a { color: var(--accent-blue-light); text-decoration: none;}
+        .freelance-links a:hover { text-decoration: underline; }
+
+        .learning-item { display: flex; margin-bottom: 10px; font-size: 0.95rem;}
+        .learning-date { width: 80px; color: var(--accent-blue); font-weight: 600; flex-shrink: 0;}
+        .learning-content { color: var(--text-muted); }
+        .learning-content strong { color: var(--text-main); font-weight: 600;}
+
+        .references-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;}
+        .reference-card p { margin: 2px 0; }
+        .ref-name { font-weight: 600; color: var(--text-main); font-size: 1.05rem;}
+        .ref-title { color: var(--accent-blue-light); font-size: 0.9rem;}
+
+        @media (max-width: 768px) { 
+            .competency-title { display: block; margin-bottom: 5px; }
+            .experience-header { flex-direction: column; }
+            .references-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
@@ -142,101 +181,231 @@
 
     <div class="container">
         <header class="glass-panel">
-            <h1>Asif Shariar LIKHON [cite: 1]</h1>
-            <h2>Marketer | Entrepreneur [cite: 1]</h2>
-            <div class="contact-info">
-                <a href="mailto:hi@likhons.com">hi@likhons.com [cite: 1]</a>
-                <span>|</span>
-                <span>+8801705502043 [cite: 1]</span>
-                <span>|</span>
-                <a href="https://linkedin.com/in/asiflikhon11" target="_blank">LinkedIn [cite: 1]</a>
-                <span>|</span>
-                <a href="https://github.com/asiflikhon11" target="_blank">GitHub [cite: 3]</a>
+            <h1>Asif Shariar LIKHON</h1>
+            <h2>Marketer | Entrepreneur</h2>
+            
+            <div class="contact-row">
+                <span class="contact-icon">in</span> <a href="https://linkedin.com/in/asiflikhon11" target="_blank">linkedin.com/in/asiflikhon11</a>
+                <span class="separator">|</span>
+                <span class="contact-icon">+</span> <span>8801705502043</span>
+                <span class="separator">|</span>
+                <span class="contact-icon">@</span> <a href="mailto:hi@likhons.com">hi@likhons.com</a>
             </div>
-            <p style="margin-top: 20px;">
-                Results-oriented Marketer focused on building impactful, scalable business systems through data-driven marketing, technical integration, and workflow streamlining to generate value[cite: 5]. Proven track record of launching agencies from scratch, securing investment, and driving revenue for diverse ventures ranging from E-Commerce, EdTech to SaaS and media[cite: 6]. Continuously solving complex business problems through innovation, team leadership, and appropriate automation[cite: 7].
-            </p>
+            <div class="contact-row">
+                <span>889 Apollo Rd, Dhaka 1229</span>
+                <span class="separator">|</span>
+                <a href="https://github.com/asiflikhon11" target="_blank">github.com/asiflikhon11</a>
+            </div>
+            <div class="contact-row" style="color: var(--text-muted);">
+                <span>i Born on March 09, 1998 (Age 28) in Kushtia, Bangladesh</span>
+            </div>
+
+            <div class="summary">
+                Results-oriented Marketer focused on building impactful, scalable business systems through data-driven marketing, technical integration, and workflow streamlining to generate value. Proven track record of launching agencies from scratch, securing investment, and driving revenue for diverse ventures ranging from E-Commerce, EdTech to SaaS and media. Continuously solving complex business problems through innovation, team leadership, and appropriate automation.
+            </div>
         </header>
 
         <section class="glass-panel">
-            <h3>Professional Experience</h3>
-            
-            <div class="timeline-item">
-                <h4>Growth Specialist @ OonkoO [cite: 14]</h4>
-                <div class="timeline-date">Oct 2023 - Current | Remote [cite: 14]</div>
-                <p>Leading growth initiatives, optimizing acquisition processes, and acting as a Product Owner to oversee in-house product development[cite: 15]. Streamlining marketing efforts to drive sustainable business growth[cite: 15].</p>
+            <h3>COMPETENCIES AND TECHNICAL CAPABILITIES</h3>
+            <div class="competency-item">
+                <span class="competency-title">Strategic Growth</span> 
+                <span style="color: var(--text-muted)">Business Intelligence, Dashboards, Team Building, Cross-Functional Collaboration, Tracking.</span>
             </div>
-
-            <div class="timeline-item">
-                <h4>Chief Marketing Officer @ Stick-On [cite: 17]</h4>
-                <div class="timeline-date">Dec 2023 - Dec 2024 | On-Site, Dhaka [cite: 17, 19]</div>
-                <p>Secured Shark Tank investment by reorganizing 8 years of business data[cite: 22]. Reduced customer acquisition costs (CAC) by 45%[cite: 23]. Developed omni-channel and B2B sales funnels, on-boarding major clients including Yamaha, Waffle-Up, and BRAC University[cite: 24, 25].</p>
+            <div class="competency-item">
+                <span class="competency-title">Digital Advertising</span> 
+                <span style="color: var(--text-muted)">Funnel Architecture, Acquisition, Media Buying, Evaluation Metrics.</span>
             </div>
-
-            <div class="timeline-item">
-                <h4>Business Development Specialist @ Core Devs ltd. [cite: 28]</h4>
-                <div class="timeline-date">Jan 2023 - Dec 2023 | Hybrid, Dhaka [cite: 18, 19, 28]</div>
-                <p>Helped building in-house software for filtering Upwork leads and automating job applications[cite: 29]. On-boarded $30K worth of clients through direct chat[cite: 29]. Delivered growth strategies for 5+ blockchain projects[cite: 30].</p>
+            <div class="competency-item">
+                <span class="competency-title">Brand Management</span> 
+                <span style="color: var(--text-muted)">Brand Book, Digital Asset Management, Copywriting, Reputation Management, Positioning.</span>
             </div>
-
-            <div class="timeline-item">
-                <h4>Digital Marketing Executive @ 6SENSE TECHNOLOGIES [cite: 33]</h4>
-                <div class="timeline-date">Apr 2021 - Jul 2022 | On-Site, Dhaka [cite: 20, 21, 33]</div>
-                <p>Quran Touch: Collaborated on global user acquisition strategies that successfully scaled the active user base to 1M+[cite: 34]. Breaking Mars: Managed $10K monthly ad spend, onboarded 1K paying customers, and integrated HubSpot[cite: 36].</p>
+            <div class="competency-item">
+                <span class="competency-title">Client Management</span> 
+                <span style="color: var(--text-muted)">Product Ownership, On-boarding, Agile Delivery, Stakeholder Communication, CRM.</span>
+            </div>
+            <div class="competency-item">
+                <span class="competency-title">Marketing Automation</span> 
+                <span style="color: var(--text-muted)">Cross-Channel Orchestration, Lead Nurturing Workflows, Behavioral Trigger Campaigns, Customer Lifecycle Marketing, Retention, Loyalty Programs.</span>
             </div>
         </section>
 
-        <div class="grid-2">
-            <section class="glass-panel">
-                <h3>Notable Freelance</h3>
-                <div class="timeline-item">
-                    <h4>KOLOM.AI [cite: 44]</h4>
-                    <p>Coordinating the Go-To-Market strategy for this AI-powered news platform[cite: 47].</p>
-                </div>
-                <div class="timeline-item">
-                    <h4>NORBY SAAS [cite: 50]</h4>
-                    <p>Contributed to automating email marketing initiatives and drip campaigns using Klaviyo[cite: 52].</p>
-                </div>
-                <div class="timeline-item">
-                    <h4>HUBXPRT [cite: 55]</h4>
-                    <p>Curated growth plans and omni-channel marketing funnels, successfully onboarding $50K USD in net-new clients[cite: 59].</p>
-                </div>
-                <div class="timeline-item">
-                    <h4>BRAYMONT [cite: 62]</h4>
-                    <p>Initiated the digital agency launch and cross-platform presence across B2B marketplaces[cite: 66].</p>
-                </div>
-                <div class="timeline-item">
-                    <h4>FILM MANIA [cite: 68]</h4>
-                    <p>Provide ongoing strategic support for commercial production (TVC/OVC), specializing in brand storytelling[cite: 72].</p>
-                </div>
-            </section>
-
-            <div style="display: flex; flex-direction: column; gap: 20px;">
-                <section class="glass-panel" style="margin-bottom: 0; flex-grow: 1;">
-                    <h3>Core Competencies</h3>
-                    <div class="tags">
-                        <span class="tag">Strategic Growth [cite: 8, 9]</span>
-                        <span class="tag">Digital Advertising [cite: 9]</span>
-                        <span class="tag">Brand Management [cite: 10]</span>
-                        <span class="tag">Client Management [cite: 11]</span>
-                        <span class="tag">Marketing Automation [cite: 12]</span>
-                        <span class="tag">Funnel Architecture [cite: 9]</span>
-                        <span class="tag">Cross-Channel Orchestration [cite: 12]</span>
-                        <span class="tag">Media Buying [cite: 9]</span>
-                    </div>
-                </section>
-
-                <section class="glass-panel" style="margin-bottom: 0;">
-                    <h3>Education & Certifications</h3>
-                    <p style="margin:0 0 10px 0;"><strong>Brac University</strong> - CS, Minor in Economics [cite: 76]</p>
-                    <div class="tags">
-                        <span class="tag">HubSpot Inbound Certification [cite: 77]</span>
-                        <span class="tag">Deep Learning & LLMs (CAIL) [cite: 78]</span>
-                        <span class="tag">AWS Cloud Essentials [cite: 84]</span>
-                        <span class="tag">Google Business Intelligence [cite: 85]</span>
-                    </div>
-                </section>
+        <section class="glass-panel">
+            <h3>PROFESSIONAL EXPERIENCES</h3>
+            
+            <div class="experience-header">
+                <div class="role-company">Growth Specialist | OonkoO</div>
+                <div class="date-location">October 2023 - Current | REMOTE, Peterborough, Ontario.</div>
             </div>
+            <ul class="custom-bullets">
+                <li>Leading growth initiatives, optimizing acquisition processes</li>
+                <li>Acting as a product Owner to oversee in-house product development</li>
+                <li>Streamlining marketing efforts to drive sustainable business growth</li>
+            </ul>
+            <div class="metrics-title">> Key Measurement Metrics</div>
+            <div class="metrics-container">
+                <span class="metric-badge">CRR</span><span class="metric-badge">LTV</span><span class="metric-badge">TTV</span><span class="metric-badge">MQL-to-SQL</span><span class="metric-badge">Churn</span>
+            </div>
+
+            <div class="experience-header">
+                <div class="role-company">Chief Marketing Officer | Stick-On</div>
+                <div class="date-location">December 2023 - December 2024 | ON-SITE, Dhaka, Bangladesh.</div>
+            </div>
+            <ul class="custom-bullets">
+                <li>Secured Shark Tank investment by reorganizing 8 years of business data</li>
+                <li>Reduced customer acquisition costs (CAC) by 45%</li>
+                <li>Aligned vision, mission and revenue projections. Transforming the organization into a scalable startup</li>
+                <li>Developed omni-channel and B2B sales funnels, on-boarding major clients including Yamaha, Waffle-Up, and BRAC University.</li>
+            </ul>
+            <div class="metrics-title">> Key Measurement Metrics</div>
+            <div class="metrics-container">
+                <span class="metric-badge">CAC</span><span class="metric-badge">LTV:CAC Ratio</span><span class="metric-badge">ROAS</span><span class="metric-badge">MRR</span><span class="metric-badge">ARR</span><span class="metric-badge">CR</span>
+            </div>
+
+            <div class="experience-header">
+                <div class="role-company">Business Development Specialist | Core Devs ltd.</div>
+                <div class="date-location">January 2023 - December 2023 | HYBRID, Dhaka, Bangladesh.</div>
+            </div>
+            <ul class="custom-bullets">
+                <li>Helped building in-house software for filtering Upwork leads and automating job applications</li>
+                <li>On-boarded $30K worth of clients through direct chat</li>
+                <li>Delivered growth strategies for 5+ blockchain projects and provided initial marketing plans</li>
+                <li>Up-sold to existing client base and introduced HubSpot for CRM maintenance</li>
+            </ul>
+            <div class="metrics-title">> Key Measurement Metrics</div>
+            <div class="metrics-container">
+                <span class="metric-badge">New-Revenue</span><span class="metric-badge">Upsell-Rate</span><span class="metric-badge">Lead-Volume</span><span class="metric-badge">Win-Rate</span>
+            </div>
+
+            <div class="experience-header">
+                <div class="role-company">Digital Marketing Executive | 6SENSE TECHNOLOGIES</div>
+                <div class="date-location">April 2021 - July 2022 | ON-SITE, Dhaka</div>
+            </div>
+            <ul class="custom-bullets">
+                <li>Quran Touch: Collaborated on global user acquisition strategies (Google Ads, Facebook Ads, and email campaigns) that successfully scaled the active user base to 1M+, contributing direct-response copywriting for key visual assets, homepages, and sales pages.</li>
+                <li>Breaking Mars: Launched Bangladesh's first LinkedIn outreach SaaS tool. Managed $10K monthly ad spend, onboarded 1K paying customers, and integrated HubSpot. Partnered with SaaS marketplaces for brand reputation.</li>
+                <li>Established the firm's online presence on platforms like GoodFirms and Clutch.</li>
+            </ul>
+            <div class="metrics-title">> Key Measurement Metrics</div>
+            <div class="metrics-container">
+                <span class="metric-badge">PPC</span><span class="metric-badge">CTR</span><span class="metric-badge">CAC</span><span class="metric-badge">LTV</span><span class="metric-badge">ROAS</span><span class="metric-badge">MRR</span><span class="metric-badge">MAU</span><span class="metric-badge">CVR</span>
+            </div>
+        </section>
+
+        <section class="glass-panel">
+            <h3>NOTABLE FREELANCE CONTRIBUTIONS</h3>
+            
+            <div class="experience-header">
+                <div class="role-company">KOLOM.AI</div>
+                <div class="date-location">DEC 2024-PRESENT</div>
+            </div>
+            <div class="freelance-links">
+                <a href="https://github.com/kolom-ai" target="_blank">github.com/kolom-ai</a>
+                <a href="https://kolom.ai" target="_blank">kolom.ai</a>
+            </div>
+            <p>Coordinating the Go-To-Market strategy for this AI-powered news platform. Defining product requirements, overseeing legislative compliance, forecasting marketing budgets, and establishing core PMF evaluation metrics.</p>
+            <div class="metrics-container">
+                <span class="metric-badge">PMF-Validation</span><span class="metric-badge">GTM</span><span class="metric-badge">Compliance</span><span class="metric-badge">Forecasting</span>
+            </div>
+
+            <div class="experience-header">
+                <div class="role-company">NORBY SAAS</div>
+                <div class="date-location">MAY 2022-JUL 2022</div>
+            </div>
+            <div class="freelance-links">
+                <a href="https://norby.io" target="_blank">norby.io</a>
+                <a href="#">LinkedIn</a>
+            </div>
+            <p>Contributed to automating email marketing initiatives and drip campaigns using Klaviyo. Oversaw lead list building, cold outreach execution, and continuous KPI tracking to optimize user engagement and retention workflows.</p>
+            <div class="metrics-container">
+                <span class="metric-badge">Klaviyo</span><span class="metric-badge">Email-Automation</span><span class="metric-badge">Lead-Nurturing</span><span class="metric-badge">KPIs</span><span class="metric-badge">Cold-Email</span>
+            </div>
+
+            <div class="experience-header">
+                <div class="role-company">HUBXPRT</div>
+                <div class="date-location">SEP 2022-DEC 2022</div>
+            </div>
+            <div class="freelance-links">
+                <a href="https://hubxpert.com" target="_blank">hubxpert.com</a>
+                <a href="#">LinkedIn</a>
+            </div>
+            <p>Curated growth plans and omni-channel marketing funnels, successfully onboarding $50K USD in net-new clients. Leveraged HubSpot automation and integrated CRM systems for rapid business scaling.</p>
+            <div class="metrics-container">
+                <span class="metric-badge">HubSpot</span><span class="metric-badge">CRM</span><span class="metric-badge">Growth-Funnels</span><span class="metric-badge">Omnichannel</span>
+            </div>
+
+            <div class="experience-header">
+                <div class="role-company">BRAYMONT</div>
+                <div class="date-location">MAR 2025-AUG 2025</div>
+            </div>
+            <div class="freelance-links">
+                <a href="https://braymont.co" target="_blank">braymont.co</a>
+                <a href="#">LinkedIn</a>
+            </div>
+            <p>Initiated the digital agency launch and cross-platform presence across B2B marketplaces (G2, Clutch). Orchestrated digital asset management, CRM integration, and B2B growth hacking strategies to successfully onboard 5 enterprise clients.</p>
+            <div class="metrics-container">
+                <span class="metric-badge">Growth-Hacking</span><span class="metric-badge">B2B-Acquisition</span><span class="metric-badge">Digital-Presence</span><span class="metric-badge">CRM-Integration</span><span class="metric-badge">DAM</span>
+            </div>
+
+            <div class="experience-header">
+                <div class="role-company">FILM MANIA</div>
+                <div class="date-location">2022-ONGOING</div>
+            </div>
+            <div class="freelance-links">
+                <a href="#">Facebook</a>
+                <a href="#">Showreel-2024</a>
+            </div>
+            <p>Provide ongoing strategic support for commercial production (TVC/OVC), specializing in brand storytelling and content distribution. Manage targeted media buying and facilitate key client relationship management.</p>
+            <div class="metrics-container">
+                <span class="metric-badge">Brand-Storytelling</span><span class="metric-badge">Media-Buying</span><span class="metric-badge">Distribution</span><span class="metric-badge">Copywriting</span>
+            </div>
+        </section>
+
+        <section class="glass-panel">
+            <h3>LIFELONG LEARNING MILESTONES</h3>
+            
+            <div class="learning-item">
+                <div class="learning-date">2017</div>
+                <div class="learning-content"><strong>[CS, Minor in Economics-Ongoing]</strong> Brac University</div>
+            </div>
+            <div class="learning-item">
+                <div class="learning-date">2022</div>
+                <div class="learning-content"><strong>[Inbound Certification]</strong> HubSpot Academy</div>
+            </div>
+            <div class="learning-item">
+                <div class="learning-date">2024</div>
+                <div class="learning-content"><strong>[Hands-On Deep Learning & Open-source Large Language Models]</strong> CAIL, Dhaka University</div>
+            </div>
+            <div class="learning-item">
+                <div class="learning-date">2025-*</div>
+                <div class="learning-content">
+                    <div style="margin-bottom: 5px;"><strong>[AWS Foundations: Getting Started with the AWS Cloud Essentials]</strong> AWS</div>
+                    <div style="margin-bottom: 5px;"><strong>[Business Intelligence]</strong> Google</div>
+                    <div style="margin-bottom: 5px;"><strong>[Media ethics & governance]</strong> University of Amsterdam (Online)</div>
+                    <div><strong>[What is news?]</strong> Michigan State University (Online)</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="glass-panel">
+            <h3>REFERENCES</h3>
+            <div class="references-grid">
+                <div class="reference-card">
+                    <p class="ref-name">Nisorgo Islam</p>
+                    <p class="ref-title">CEO, STICK-ON</p>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">nisorgoislam@gmail.com</p>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">+880 1631-356933</p>
+                </div>
+                <div class="reference-card">
+                    <p class="ref-name">Muntashir Akib</p>
+                    <p class="ref-title">Director & Owner, FILM MANIAL</p>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">m7akib@gmail.com</p>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">+880 1307-074441</p>
+                </div>
+            </div>
+        </section>
+        
+        <div style="text-align: center; color: var(--text-muted); font-size: 0.8rem; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 2px;">
+            LIKHONS.COM
         </div>
     </div>
 </body>
