@@ -7,7 +7,7 @@
     
     <title>Asif Shariar LIKHON | Marketer & Entrepreneur</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
         :root {
             /* Base Colors */
@@ -36,6 +36,11 @@
             --metric-border: rgba(0, 102, 255, 0.2);
             --metric-text: var(--accent-blue-dark);
             --metric-weight: 700;
+
+            /* Contact Pill Variables - Light */
+            --pill-bg: rgba(0, 102, 255, 0.04);
+            --pill-border: rgba(0, 102, 255, 0.12);
+            --pill-hover: rgba(0, 102, 255, 0.1);
         }
 
         /* DARK MODE OVERRIDES */
@@ -60,6 +65,11 @@
             --metric-border: var(--accent-blue);
             --metric-text: #FFFFFF;
             --metric-weight: 600;
+
+            /* Contact Pill Variables - Dark */
+            --pill-bg: rgba(0, 119, 255, 0.08);
+            --pill-border: rgba(0, 119, 255, 0.25);
+            --pill-hover: rgba(0, 119, 255, 0.18);
         }
 
         body, html {
@@ -71,31 +81,6 @@
             overflow-x: hidden;
             line-height: 1.6;
             transition: background-color 0.5s ease, color 0.5s ease;
-        }
-
-        /* Theme Toggle Button */
-        .theme-toggle {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 1000;
-            background: var(--glass-bg);
-            backdrop-filter: blur(28px) saturate(140%);
-            -webkit-backdrop-filter: blur(28px) saturate(140%);
-            border: 1px solid var(--glass-border);
-            box-shadow: var(--glass-shadow);
-            color: var(--accent-blue);
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: transform 0.3s ease, background 0.5s ease;
-        }
-        .theme-toggle:hover {
-            transform: scale(1.1);
         }
 
         /* Dynamic Liquid Background */
@@ -179,21 +164,93 @@
             padding: 0 20px;
         }
 
-        /* Typography & Layout */
-        h1 { font-size: 2.5rem; margin-bottom: 0.2rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;}
-        h2 { font-size: 1.2rem; color: var(--accent-blue); font-weight: 600; margin-bottom: 1rem; letter-spacing: 2px; text-transform: uppercase;}
+        /* Header Layout & Theme Toggle */
+        .header-title-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        h1 { font-size: 2.5rem; margin: 0; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;}
+        h2 { font-size: 1.2rem; color: var(--accent-blue); font-weight: 600; margin: 5px 0 1rem 0; letter-spacing: 2px; text-transform: uppercase;}
+        
+        .theme-toggle {
+            background: transparent;
+            border: 1px solid var(--glass-border);
+            color: var(--accent-blue);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+        .theme-toggle:hover {
+            transform: scale(1.1) rotate(15deg);
+            background: var(--pill-hover);
+            border-color: var(--accent-blue);
+        }
+
+        /* Improved UX Contact Section (Pills) */
+        .contact-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+        
+        .contact-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 30px;
+            background: var(--pill-bg);
+            border: 1px solid var(--pill-border);
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-pill:hover, a.contact-pill:hover {
+            border-color: var(--accent-blue);
+            transform: translateY(-2px);
+            background: var(--pill-hover);
+            color: var(--accent-blue);
+        }
+        
+        .contact-pill svg {
+            width: 16px;
+            height: 16px;
+            color: var(--accent-blue);
+            flex-shrink: 0;
+        }
+
+        .contact-pill-muted {
+            background: transparent;
+            border-color: transparent;
+            color: var(--text-muted);
+            padding: 4px 0;
+            font-weight: 500;
+        }
+        .contact-pill-muted:hover {
+            transform: none;
+            background: transparent;
+            border-color: transparent;
+            color: var(--text-main);
+        }
+
+        /* Typography */
         h3 { font-size: 1.3rem; border-bottom: 1px solid var(--h3-border); padding-bottom: 10px; margin-top: 0; text-transform: uppercase; letter-spacing: 1px; color: var(--text-main); transition: border-color 0.5s ease;}
         h4 { font-size: 1.1rem; margin: 0 0 5px 0; font-weight: 700;}
-        
         p { color: var(--text-muted); margin-bottom: 0.8rem; font-size: 0.95rem; transition: color 0.5s ease;}
-        
-        .contact-row { display: flex; gap: 15px; flex-wrap: wrap; font-size: 0.9rem; margin-bottom: 5px; align-items: center;}
-        .contact-row a { color: var(--text-main); text-decoration: none; transition: color 0.3s; font-weight: 600;}
-        .contact-row a:hover { color: var(--accent-blue); }
-        .contact-icon { color: var(--accent-blue); font-weight: bold; margin-right: 4px; display: inline-flex; align-items: center; justify-content: center; }
-        .separator { color: var(--accent-blue); }
-
-        .summary { margin-top: 25px; font-size: 0.95rem; line-height: 1.7; color: var(--text-main); font-weight: 400;}
+        .summary { margin-top: 15px; font-size: 0.95rem; line-height: 1.7; color: var(--text-main); font-weight: 400;}
 
         /* Custom Lists */
         .competency-item { margin-bottom: 10px; font-size: 0.95rem;}
@@ -238,17 +295,11 @@
             .competency-title { display: block; margin-bottom: 5px; }
             .experience-header { flex-direction: column; }
             .references-grid { grid-template-columns: 1fr; }
-            .theme-toggle { top: 15px; right: 15px; left: auto; } /* Move to right on mobile to avoid overlapping content */
+            h1 { font-size: 2rem; }
         }
     </style>
 </head>
 <body>
-
-    <button class="theme-toggle" id="themeToggleBtn" aria-label="Toggle Dark Mode" onclick="toggleTheme()">
-        <svg id="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-        </svg>
-    </button>
 
     <div class="background-blobs">
         <div class="blob"></div>
@@ -258,34 +309,58 @@
 
     <div class="container">
         <header class="glass-panel">
-            <h1>Asif Shariar LIKHON</h1>
+            <div class="header-title-row">
+                <h1>Asif Shariar LIKHON</h1>
+                <button class="theme-toggle" id="themeToggleBtn" aria-label="Toggle Dark Mode" onclick="toggleTheme()">
+                    <svg id="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+            </div>
             <h2>Marketer | Entrepreneur</h2>
             
-            <div class="contact-row">
-                <span class="contact-icon">in</span> <a href="https://linkedin.com/in/asiflikhon11" target="_blank">linkedin.com/in/asiflikhon11</a>
-                <span class="separator">|</span>
-                <span class="contact-icon">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <div class="contact-pills">
+                <a href="https://linkedin.com/in/asiflikhon11" target="_blank" class="contact-pill">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                    linkedin.com/in/asiflikhon11
+                </a>
+                
+                <a href="tel:+8801705502043" class="contact-pill">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                     </svg>
-                </span> 
-                <span>(+880) 1705502043</span>
-                <span class="separator">|</span>
-                <span class="contact-icon">@</span> <a href="mailto:hi@likhons.com">hi@likhons.com</a>
-            </div>
-            <div class="contact-row">
-                <span class="contact-icon">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                        <circle cx="12" cy="10" r="3"></circle>
+                    (+880) 1705502043
+                </a>
+                
+                <a href="mailto:hi@likhons.com" class="contact-pill">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline>
                     </svg>
-                </span>
-                <span>889 Apollo Rd, Dhaka 1229</span>
-                <span class="separator">|</span>
-                <a href="https://github.com/asiflikhon11" target="_blank">github.com/asiflikhon11</a>
-            </div>
-            <div class="contact-row" style="color: var(--text-muted);">
-                <span>Marking 28 years of existence, born in Kushtia during the বসন্ত of 1998.</span>
+                    hi@likhons.com
+                </a>
+                
+                <div class="contact-pill">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    889 Apollo Rd, Dhaka 1229
+                </div>
+                
+                <a href="https://github.com/asiflikhon11" target="_blank" class="contact-pill">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                    github.com/asiflikhon11
+                </a>
+
+                <div class="contact-pill contact-pill-muted">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line>
+                    </svg>
+                    Marking 28 years of existence, born in Kushtia during the বসন্ত of 1998.
+                </div>
             </div>
 
             <div class="summary">
