@@ -281,8 +281,7 @@
                 <h1>Asif Shariar LIKHON</h1>
                 <button class="theme-toggle" id="themeToggleBtn" aria-label="Toggle Dark Mode" onclick="toggleTheme()">
                     <svg id="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
+                        </svg>
                 </button>
             </div>
             <h2>Marketer | Entrepreneur</h2>
@@ -570,23 +569,44 @@
         const sunIcon = `<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>`;
         const moonIcon = `<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>`;
         
-        function toggleTheme() {
-            const body = document.body;
-            body.classList.toggle('dark-mode');
-            const isDark = body.classList.contains('dark-mode');
-            
-            // Save preference
-            localStorage.setItem('portfolio_theme', isDark ? 'dark' : 'light');
-            
-            // Update Icon
-            document.getElementById('theme-icon').innerHTML = isDark ? sunIcon : moonIcon;
+        const themeIcon = document.getElementById('theme-icon');
+        const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+
+        // Apply theme and update icon
+        function applyTheme(isDark) {
+            if (isDark) {
+                document.body.classList.add('dark-mode');
+                themeIcon.innerHTML = sunIcon;
+            } else {
+                document.body.classList.remove('dark-mode');
+                themeIcon.innerHTML = moonIcon;
+            }
         }
 
-        // Check user's saved preference on load
-        if (localStorage.getItem('portfolio_theme') === 'dark') {
-            document.body.classList.add('dark-mode');
-            document.getElementById('theme-icon').innerHTML = sunIcon;
+        // 1. Initialize on Load
+        const savedTheme = localStorage.getItem('portfolio_theme');
+        if (savedTheme === 'dark') {
+            applyTheme(true); // User previously chose dark
+        } else if (savedTheme === 'light') {
+            applyTheme(false); // User previously chose light
+        } else {
+            applyTheme(prefersDarkScheme.matches); // No choice saved, follow browser system preference
         }
+
+        // 2. Manual Toggle Button Function
+        function toggleTheme() {
+            const isDark = !document.body.classList.contains('dark-mode');
+            applyTheme(isDark);
+            localStorage.setItem('portfolio_theme', isDark ? 'dark' : 'light'); // Save explicit choice
+        }
+
+        // 3. Listen for System Theme Changes in Real-Time
+        prefersDarkScheme.addEventListener('change', (e) => {
+            // Only auto-switch if the user hasn't explicitly set a preference via the button
+            if (!localStorage.getItem('portfolio_theme')) {
+                applyTheme(e.matches);
+            }
+        });
     </script>
 </body>
 </html>
