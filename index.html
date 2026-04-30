@@ -32,15 +32,12 @@
             --blob-2-opacity: 0.8;
 
             --h3-border: rgba(0,0,0,0.1);
-            --metric-bg: rgba(0, 102, 255, 0.08);
-            --metric-border: rgba(0, 102, 255, 0.2);
-            --metric-text: var(--accent-blue-dark);
-            --metric-weight: 700;
-
-            /* Contact Pill Variables - Light */
+            
+            /* Shared Interactive UI Elements (Contact & Metrics) - Light */
             --pill-bg: rgba(0, 102, 255, 0.04);
             --pill-border: rgba(0, 102, 255, 0.12);
             --pill-hover: rgba(0, 102, 255, 0.1);
+            --metric-text: var(--accent-blue-dark);
         }
 
         /* DARK MODE OVERRIDES */
@@ -61,15 +58,12 @@
             --blob-2-opacity: 0.2;
 
             --h3-border: var(--glass-border);
-            --metric-bg: rgba(0, 119, 255, 0.1);
-            --metric-border: var(--accent-blue);
-            --metric-text: #FFFFFF;
-            --metric-weight: 600;
-
-            /* Contact Pill Variables - Dark */
+            
+            /* Shared Interactive UI Elements (Contact & Metrics) - Dark */
             --pill-bg: rgba(0, 119, 255, 0.08);
             --pill-border: rgba(0, 119, 255, 0.25);
             --pill-hover: rgba(0, 119, 255, 0.18);
+            --metric-text: #FFFFFF;
         }
 
         body, html {
@@ -181,7 +175,7 @@
             color: var(--accent-blue);
             width: 40px;
             height: 40px;
-            border-radius: 50%;
+            border-radius: 4px; /* Squared off theme toggle to match */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -195,7 +189,7 @@
             border-color: var(--accent-blue);
         }
 
-        /* Improved UX Contact Section (Pills) */
+        /* Shared Interactive UX for Contact Info & Metrics */
         .contact-pills {
             display: flex;
             flex-wrap: wrap;
@@ -203,22 +197,29 @@
             margin-bottom: 25px;
         }
         
-        .contact-pill {
+        .contact-pill, .metric-badge {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 8px 16px;
-            border-radius: 30px;
+            padding: 6px 14px;
+            border-radius: 4px; /* Unified Square Shape */
             background: var(--pill-bg);
             border: 1px solid var(--pill-border);
             color: var(--text-main);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 600;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
         
-        .contact-pill:hover, a.contact-pill:hover {
+        .metric-badge {
+            color: var(--metric-text);
+            padding: 4px 12px;
+            cursor: default; /* Keep cursor default for non-links, but keep hover */
+        }
+
+        .contact-pill:hover, a.contact-pill:hover, .metric-badge:hover {
             border-color: var(--accent-blue);
             transform: translateY(-2px);
             background: var(--pill-hover);
@@ -226,18 +227,20 @@
         }
         
         .contact-pill svg {
-            width: 16px;
-            height: 16px;
+            width: 15px;
+            height: 15px;
             color: var(--accent-blue);
             flex-shrink: 0;
         }
 
+        /* Specific Muted Text Pill */
         .contact-pill-muted {
             background: transparent;
             border-color: transparent;
             color: var(--text-muted);
             padding: 4px 0;
             font-weight: 500;
+            cursor: default;
         }
         .contact-pill-muted:hover {
             transform: none;
@@ -265,17 +268,7 @@
         ul.custom-bullets li::before { content: ">"; position: absolute; left: 0; color: var(--accent-blue); font-weight: bold; }
 
         .metrics-title { font-size: 0.85rem; font-weight: 700; color: var(--text-main); margin-bottom: 8px; margin-top: 15px;}
-        .metrics-container { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px;}
-        .metric-badge { 
-            background: var(--metric-bg); 
-            border: 1px solid var(--metric-border);
-            padding: 4px 12px; 
-            border-radius: 4px; 
-            font-size: 0.8rem; 
-            color: var(--metric-text);
-            font-weight: var(--metric-weight);
-            transition: all 0.5s ease;
-        }
+        .metrics-container { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px;}
 
         .freelance-links { font-size: 0.85rem; color: var(--accent-blue); margin-bottom: 10px; display: flex; gap: 15px; font-weight: 600;}
         .freelance-links a { color: var(--accent-blue); text-decoration: none;}
@@ -355,8 +348,8 @@
                     github.com/asiflikhon11
                 </a>
 
-                <div class="contact-pill contact-pill-muted">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <div class="contact-pill-muted">
+                    <svg style="width: 15px; height: 15px; margin-right: 5px; color: var(--accent-blue); vertical-align: middle;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line>
                     </svg>
                     Marking 28 years of existence, born in Kushtia during the বসন্ত of 1998.
