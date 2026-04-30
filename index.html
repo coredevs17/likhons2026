@@ -147,17 +147,19 @@
 
         .container { max-width: 900px; margin: 60px auto; padding: 0 20px; }
 
-        /* Profile Header with Image & Title */
+        /* Profile Header - Center Aligned */
         .profile-header {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 25px;
+            text-align: center;
+            gap: 15px;
             margin-bottom: 25px;
         }
         .profile-image-container img {
-            width: 80px; /* 20% smaller */
-            height: 80px; /* 20% smaller */
-            border-radius: 50%; /* Perfect circle */
+            width: 80px; 
+            height: 80px; 
+            border-radius: 50%; 
             object-fit: cover;
             border: 2px solid var(--glass-border);
             background: var(--pill-bg);
@@ -165,9 +167,15 @@
             transition: border-color 0.5s ease;
         }
         
-        .header-title-row { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
+        .header-title-row { 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            gap: 15px; 
+            flex-wrap: wrap; 
+        }
         h1 { font-size: 2.5rem; margin: 0; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;}
-        h2 { font-size: 1.2rem; color: var(--accent-blue); font-weight: 600; margin: 5px 0 0 0; letter-spacing: 2px; text-transform: uppercase;}
+        h2 { font-size: 1.2rem; color: var(--accent-blue); font-weight: 600; margin: 5px 0 0 0; letter-spacing: 2px; text-transform: uppercase; text-align: center;}
         
         .theme-toggle {
             background: transparent; border: 1px solid var(--glass-border); color: var(--accent-blue);
@@ -177,7 +185,13 @@
         .theme-toggle:hover { transform: scale(1.1) rotate(15deg); background: var(--pill-hover); border-color: var(--accent-blue); }
 
         /* Contact Section */
-        .contact-pills { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 25px; }
+        .contact-pills { 
+            display: flex; 
+            flex-wrap: wrap; 
+            justify-content: center;
+            gap: 10px; 
+            margin-bottom: 25px; 
+        }
         .contact-pill {
             display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 4px;
             background: var(--pill-bg); border: 1px solid var(--pill-border); color: var(--text-main);
@@ -216,6 +230,7 @@
 
         .contact-pill-muted {
             background: transparent; border-color: transparent; color: var(--text-muted); padding: 4px 0; font-weight: 500; cursor: default;
+            display: flex; align-items: center; justify-content: center; width: 100%; text-align: center;
         }
         .contact-pill-muted:hover { transform: none; background: transparent; border-color: transparent; color: var(--text-main); }
 
@@ -415,7 +430,6 @@
         }
 
         @media (max-width: 768px) { 
-            .profile-header { flex-direction: column; align-items: flex-start; gap: 15px; }
             .competency-card, .learning-grid { grid-template-columns: 1fr; gap: 8px; }
             .references-grid { grid-template-columns: 1fr; }
             h1 { font-size: 2rem; }
@@ -494,7 +508,7 @@
                     Book an Appointment
                 </a>
 
-                <div class="contact-pill-muted" style="width: 100%;">
+                <div class="contact-pill-muted">
                     <svg style="width: 15px; height: 15px; margin-right: 5px; color: var(--accent-blue); vertical-align: middle;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line>
                     </svg>
@@ -741,13 +755,13 @@
             <h3>REFERENCES</h3>
             <div class="references-grid">
                 <div class="reference-card">
-                    <p class="ref-name">M Nisorgo Islam</p>
+                    <p class="ref-name">M. Nisorgo Islam</p>
                     <p class="ref-title">Managing Director & CEO, STICK-ON</p>
                     <p style="color: var(--text-muted); font-size: 0.9rem;">nisorgoislam@gmail.com</p>
                 </div>
                 <div class="reference-card">
                     <p class="ref-name">Muntashir Akib</p>
-                    <p class="ref-title">Director & Owner, FILM MANIA</p>
+                    <p class="ref-title">Film Director & Owner, FILM MANIA</p>
                     <p style="color: var(--text-muted); font-size: 0.9rem;">m7akib@gmail.com</p>
                 </div>
             </div>
